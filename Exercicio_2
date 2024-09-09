@@ -1,0 +1,69 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    public static Scanner scanner = new Scanner(System.in);
+
+    public String itemNome;
+    public int itemQuantidade;
+
+    public Main(String itemNome, int quantidade) {
+        this.itemNome = itemNome;
+        this.itemQuantidade = quantidade;
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Main> produtosEstoque = new ArrayList<>();
+
+        while (true) {
+            System.out.println("Controle de Estoque");
+            System.out.println("Escolha uma opção:");
+            System.out.println("Adicionar produto(1)");
+            System.out.println("Ver itens já cadastrados(2)");
+            System.out.println("Sair(3)");
+
+            int escolhaUsuario = scanner.nextInt();
+
+            if (escolhaUsuario < 1 || escolhaUsuario > 3) {
+                System.out.println("Escolha inválida. Tente novamente.");
+                continue;
+            }
+
+            switch (escolhaUsuario) {
+                case 1:
+                    adicionarItem(produtosEstoque);
+                    break;
+                case 2:
+                    verItensCadastrados(produtosEstoque);
+                    break;
+                case 3:
+                    System.out.println("Usuário escolheu sair.");
+                    return;
+            }
+        }
+    }
+
+    public static void adicionarItem(ArrayList<Main> produtosEstoque) {
+        System.out.println("Digite o nome do item:");
+        String itemNome = scanner.next();
+
+        System.out.println("Digite a quantidade do item:");
+        int quantidade = scanner.nextInt();
+
+        produtosEstoque.add(new Main(itemNome, quantidade));
+        System.out.println("Item adicionado com sucesso!");
+    }
+
+    public static void verItensCadastrados(ArrayList<Main> produtosEstoque) {
+        if (produtosEstoque.isEmpty()) {
+            System.out.println("Nenhum item cadastrado.");
+        } else {
+            for (Main item : produtosEstoque) {
+                System.out.println("-".repeat(30));
+                System.out.println("Item: " + item.itemNome + ", Quantidade: " + item.itemQuantidade);
+                System.out.println("-".repeat(30));
+            }
+        }
+    }
+}
