@@ -1,0 +1,91 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    public static Scanner scanner = new Scanner(System.in);
+    public static ArrayList<Double> movimentacaocaixa = new ArrayList<>();
+
+    public static void main(String[] args) {
+        System.out.println("Sistema bancário simples");
+        Escolhausuario();
+    }
+
+    public static void Escolhausuario(){
+        System.out.println("Escolha uma opção\n");
+        System.out.println("Consultar Saldo(1)");
+        System.out.println("Depositar(2)");
+        System.out.println("Sacar(3)");
+        System.out.println("Transferir(4)");
+        System.out.println("Sair(5)");
+
+        int opcusuario = scanner.nextInt();
+
+        switch (opcusuario) {
+            case 1:
+                ConsultarSaldo();
+                break;
+            case 2:
+                Depositar();
+                break;
+            case 3:
+                Sacar();
+                break;
+            case 4:
+                Transferir();
+                break;
+            case 5:
+                sair();
+                break;
+            default:
+                System.out.println("Opção não encontrada");
+                Escolhausuario();
+                break;
+        }
+    }
+
+    public static void ConsultarSaldo() {
+        double saldo = 0;
+        for (Double valor : movimentacaocaixa) {
+            saldo += valor; // Calcula o saldo somando todos os valores na lista
+        }
+        System.out.println("Saldo atual: " + saldo);
+        Escolhausuario();
+    }
+
+    public static void Depositar() {
+        System.out.println("Digite a quantidade que você deseja depositar: ");
+        double valorDeposito = scanner.nextDouble();
+        movimentacaocaixa.add(valorDeposito);
+        System.out.println("Valor depositado: " + valorDeposito);
+        ConsultarSaldo();
+    }
+
+    public static void Sacar() {
+        System.out.println("Digite a quantidade que você deseja sacar: ");
+        double valorSaque = scanner.nextDouble();
+        double saldo = 0;
+
+        for (Double valor : movimentacaocaixa) {
+            saldo += valor;
+        }
+
+        if (valorSaque <= saldo) {
+            movimentacaocaixa.add(-valorSaque);
+            System.out.println("Valor sacado: " + valorSaque);
+            ConsultarSaldo();
+        } else {
+            System.out.println("Saldo insuficiente.");
+            Escolhausuario();
+        }
+    }
+
+    public static void Transferir() {
+        System.out.println("Funcionalidade de transferência não implementada ainda.");
+        Escolhausuario();
+    }
+
+    public static void sair() {
+        System.out.println("Operação finalizada com sucesso");
+    }
+}
