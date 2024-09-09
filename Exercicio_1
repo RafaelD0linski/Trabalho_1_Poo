@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        System.out.println("Cadastros de Pessoas");
+        Principal();
+    }
+
+    public static void Principal() {
+
+        System.out.println("Digite seu nome:");
+        String nome = scanner.nextLine();
+
+
+        int idade = -1;
+        while (idade < 0) {
+            System.out.println("Digite a idade (um número positivo):");
+            if (scanner.hasNextInt()) {
+                idade = scanner.nextInt();
+                if (idade < 0) {
+                    System.out.println("Erro: A idade não pode ser negativa. Tente novamente.");
+                }
+            } else {
+                System.out.println("Entrada inválida. Por favor, digite um número inteiro.");
+                scanner.next();
+            }
+        }
+
+        scanner.nextLine();
+
+        System.out.println("Digite seu Endereço:");
+        String endereco = scanner.nextLine();
+
+        System.out.println("Digite o numero do endereço::");
+        String numero = scanner.nextLine();
+
+        System.out.println("-".repeat(30));
+        System.out.println("**** Cadastro ****");
+        System.out.println("Nome digitado: " + nome);
+        System.out.println("Idade: " + idade);
+        System.out.println("Endereço cadastrado: " + endereco + ", Número: " + numero);
+        System.out.println("-".repeat(30));
+    }
+}
