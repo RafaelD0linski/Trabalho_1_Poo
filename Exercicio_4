@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner =  new Scanner(System.in);
+
+        System.out.println("Digite sua placa: ");
+        String placa = scanner.next();
+
+        char ultimoDigito = placa.charAt(placa.length() - 1);
+
+        System.out.println("O último dígito da placa é: " + ultimoDigito);
+
+        scanner.close();
+        DiaPagamentoIpva(placa);
+    }
+
+    public static void DiaPagamentoIpva(String placa){
+
+        System.out.println("Dia do pagamento ");
+        switch (placa) {
+            case "1": case "A":
+                System.out.println("Final 1: 10 de Janeiro");
+                break;
+            case "2": case "B":
+                System.out.println("Final 2: 15 de Janeiro");
+                break;
+            case "3": case "C":
+                System.out.println("Final 3: 20 de Janeiro");
+                break;
+            case "4": case "D":
+                System.out.println("Final 4: 25 de Janeiro");
+                break;
+            case "5": case "E":
+                System.out.println("Final 5: 30 de Janeiro");
+                break;
+            case "6": case "F":
+                System.out.println("Final 6: 05 de Fevereiro");
+                break;
+            case "7": case "G":
+                System.out.println("Final 7: 10 de Fevereiro");
+                break;
+            case "8": case "H":
+                System.out.println("Final 8: 15 de Fevereiro");
+                break;
+            case "9": case "I":
+                System.out.println("Final 9: 20 de Fevereiro");
+                break;
+            case "0": case "J":
+                System.out.println("Final 0: 25 de Fevereiro");
+                break;
+            default:
+                System.out.println("PALCA INVALIDA");
+        }
+    }
+}
